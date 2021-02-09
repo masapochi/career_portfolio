@@ -4,61 +4,61 @@ Route::get('/', function () {
     $skills = json_decode(json_encode([
         [
             'label'  => 'WEB',
-            'file'   => 'html',
-            'detail' => 'HTML5, CSS3, Sass, Bootstrap, Bulma',
+            'file'   => 'skills/html.svg',
+            'detail' => 'HTML5, CSS3, Sass, Bootstrap',
         ],
         [
             'label'  => 'Javascript',
-            'file'   => 'js',
-            'detail' => 'Vue.js, jQuery',
+            'file'   => 'skills/js.svg',
+            'detail' => 'Vue.js, jQuery, Node.js',
         ],
         [
-            'label'  => 'PHP',
-            'file'   => 'php',
+            'label'  => 'php',
+            'file'   => 'skills/php.svg',
             'detail' => 'Laravel, Wordpress',
         ],
         [
             'label'  => 'Python',
-            'file'   => 'python',
+            'file'   => 'skills/python.svg',
             'detail' => 'Flask',
         ],
         [
-            'label'  => 'Databases',
-            'file'   => 'db',
-            'detail' => 'Adobe XD',
+            'label'  => 'Database',
+            'file'   => 'skills/db.svg',
+            'detail' => 'SQL Server, MySQL, SQLite',
         ],
         [
             'label'  => 'Design',
-            'file'   => 'xd',
-            'detail' => 'SQL Server, MySQL, SQLite',
+            'file'   => 'skills/xd.svg',
+            'detail' => 'Adobe XD',
         ],
     ]));
 
-    $menus = [
-        ['link' => 'home', 'label' => 'Home'],
-        ['link' => 'works', 'label' => 'Works '],
-        ['link' => 'services', 'label' => 'Services'],
-        ['link' => 'skills', 'label' => 'Skills'],
-        ['link' => 'about', 'label' => 'About '],
-        ['link' => 'contact', 'label' => 'Contact '],
-    ];
+    $menus = json_decode(json_encode([
+        ['href' => 'home', 'label' => 'Home'],
+        ['href' => 'services', 'label' => 'Services'],
+        ['href' => 'works', 'label' => 'Works '],
+        ['href' => 'skills', 'label' => 'Skills'],
+        ['href' => 'about', 'label' => 'About '],
+        ['href' => 'contact', 'label' => 'Contact '],
+    ]));
 
-    $works = [
+    $works = json_decode(json_encode([
         [
             'title' => 'Catalog Demo',
             'desc'  => 'Catalog Demo" using Lorem Ipsum.',
-            'image' => './assets/images/works/ogp.jpg',
-            'url'   => 'https://masapochi.me/catalog/',
+            'image' => 'works/ogp.jpg',
+            'href'   => 'https://masapochi.me/catalog/',
             'rel'   => false,
         ],
         [
             'title' => 'Thumbs Game',
             'desc'  => 'Everyone knows it, but no one knows it\'s name...',
-            'image' => './assets/images/works/ogp.jpg',
-            'url'   => 'https://masapochi.me/that-game/',
+            'image' => 'works/ogp.jpg',
+            'href'   => 'https://masapochi.me/that-game/',
             'rel'   => false,
         ],
-    ];
+    ]));
 
     $careers = [
         [
@@ -83,17 +83,63 @@ Route::get('/', function () {
         ],
     ];
 
-    $snses = [
+    $snses = json_decode(json_encode([
         [
-            'name'     => 'Twitter',
-            'url'      => 'https://twitter.com/__masapochi__',
-            'iconPath' => './assets/images/sns/twitter.svg',
+            'label' => 'Twitter',
+            'href'  => 'https://twitter.com/__masapochi__',
+            'file' => 'sns/twitter.svg',
         ],
         [
-            'name'     => 'Github',
-            'url'      => 'https://github.com/masapochi',
-            'iconPath' => './assets/images/sns/github.svg',
+            'label' => 'Github',
+            'href'  => 'https://github.com/masapochi',
+            'file' => 'sns/github.svg',
         ],
-    ];
-    return view('master', compact('skills', 'menus', 'works', 'careers', 'snses'));
+    ]));
+
+    $services = json_decode(json_encode([
+        [
+            'label' => 'Direction, Strategy',
+            'desc'  => 'いつもあなたの側に',
+            'href'  => '',
+            'file'  => 'services/direction.jpg',
+        ],
+        [
+            'label' => 'Performance, SEO',
+            'desc'  => 'より速く、より見つけやすく',
+            'href'  => '',
+            'file'  => 'services/performance.jpg',
+        ],
+        [
+            'label' => 'User Friendly',
+            'desc'  => '使いやすいって素晴らしい',
+            'href'  => '',
+            'file'  => 'services/user_friendly.jpg',
+        ],
+        [
+            'label' => 'Multi Devices',
+            'desc'  => 'どんなデバイスでも美しく',
+            'href'  => '',
+            'file'  => 'services/multi_device.jpg',
+        ],
+        [
+            'label' => 'Dynamic Animation',
+            'desc'  => 'ページをダイナミックに',
+            'href'  => '',
+            'file'  => 'services/animation.jpg',
+        ],
+        [
+            'label' => 'Admin System, Wordpress',
+            'desc'  => 'コンテンツ管理を簡単に',
+            'href'  => '',
+            'file'  => 'services/admin.jpg',
+        ],
+        [
+            'label' => 'With Love',
+            'desc'  => '愛を込めて',
+            'href'  => '',
+            'file'  => 'services/love.jpg',
+        ],
+    ]));
+
+    return view('master', compact('menus', 'services', 'works', 'skills', 'careers', 'snses'));
 });
