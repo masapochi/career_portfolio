@@ -38,8 +38,8 @@ Route::get('/', function () {
         ['href' => 'home', 'label' => 'Home'],
         ['href' => 'services', 'label' => 'Services'],
         ['href' => 'works', 'label' => 'Works '],
+        ['href' => 'biography', 'label' => 'Biography '],
         ['href' => 'skills', 'label' => 'Skills'],
-        ['href' => 'about', 'label' => 'About '],
         ['href' => 'contact', 'label' => 'Contact '],
     ]));
 
@@ -48,14 +48,16 @@ Route::get('/', function () {
             'title' => 'Catalog Demo',
             'desc'  => 'Catalog Demo" using Lorem Ipsum.',
             'image' => 'works/ogp.jpg',
-            'href'   => 'https://masapochi.me/catalog/',
+            'href'  => 'https://masapochi.me/catalog/',
+            'git'   => 'https://github.com/masapochi/products-catalog/',
             'rel'   => false,
         ],
         [
             'title' => 'Thumbs Game',
             'desc'  => 'Everyone knows it, but no one knows it\'s name...',
             'image' => 'works/ogp.jpg',
-            'href'   => 'https://masapochi.me/that-game/',
+            'href'  => 'https://masapochi.me/that-game/',
+            'git'   => 'https://github.com/masapochi/that-game/',
             'rel'   => false,
         ],
     ]));
@@ -98,43 +100,43 @@ Route::get('/', function () {
 
     $services = json_decode(json_encode([
         [
-            'label' => 'Direction, Strategy',
+            'label' => 'Strategy',
             'desc'  => 'いつもあなたの側に',
             'href'  => '',
             'file'  => 'services/direction.jpg',
         ],
         [
-            'label' => 'Performance, SEO',
+            'label' => 'SEO',
             'desc'  => 'より速く、より見つけやすく',
             'href'  => '',
             'file'  => 'services/performance.jpg',
         ],
         [
-            'label' => 'User Friendly',
+            'label' => 'Usability',
             'desc'  => '使いやすいって素晴らしい',
             'href'  => '',
             'file'  => 'services/user_friendly.jpg',
         ],
         [
-            'label' => 'Multi Devices',
+            'label' => 'Responsive',
             'desc'  => 'どんなデバイスでも美しく',
             'href'  => '',
             'file'  => 'services/multi_device.jpg',
         ],
         [
-            'label' => 'Dynamic Animation',
+            'label' => 'Animation',
             'desc'  => 'ページをダイナミックに',
             'href'  => '',
             'file'  => 'services/animation.jpg',
         ],
         [
-            'label' => 'Admin System, Wordpress',
+            'label' => 'Management',
             'desc'  => 'コンテンツ管理を簡単に',
             'href'  => '',
             'file'  => 'services/admin.jpg',
         ],
         [
-            'label' => 'With Love',
+            'label' => 'Love',
             'desc'  => '愛を込めて',
             'href'  => '',
             'file'  => 'services/love.jpg',
