@@ -5,7 +5,7 @@ Route::get('/', function () {
         [
             'label'  => 'WEB',
             'file'   => 'skills/html.svg',
-            'detail' => 'HTML5, CSS3, Sass, Bootstrap',
+            'detail' => 'HTML, CSS, Sass, Bootstrap',
         ],
         [
             'label'  => 'Javascript',
@@ -46,7 +46,7 @@ Route::get('/', function () {
     $works = json_decode(json_encode([
         [
             'title' => 'Catalog Demo',
-            'desc'  => 'Catalog Demo" using Lorem Ipsum.',
+            'desc'  => 'Catalog Demo" using Lorem Ipsum.Catalog Demo" using Lorem Ipsum.Catalog Demo" using Lorem Ipsum.Catalog Demo" using Lorem Ipsum.',
             'image' => 'works/ogp.jpg',
             'href'  => 'https://masapochi.me/catalog/',
             'git'   => 'https://github.com/masapochi/products-catalog/',

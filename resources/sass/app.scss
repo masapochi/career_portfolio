@@ -23,10 +23,14 @@ $xxl: 1400px;
 
 
 body {
+    position: relative;
     background: #f0f0f0;
     font-family: "Noto Sans JP", sans-serif;
-    // display: grid;
-    // grid-template-rows: auto 1fr auto;
+    color: #4a4a4a;
+    color: #434343;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
 }
 
 section.section:nth-child(odd) {
@@ -56,22 +60,12 @@ section.section:nth-child(odd) {
 }
 
 
-body {
-    position: relative;
-    color: #4a4a4a;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.05em;
-}
+body {}
 
 .title {
     font-size: calc(1.625rem + 4.5vw);
     text-align: center;
     @include font-serif;
-
-    // @media (min-width: $md) {
-    //     font-size: calc(1.475rem + 2.7vw);
-    // }
 
     @media (min-width: $xl) {
         font-size: 3.5rem;
@@ -83,8 +77,12 @@ body {
 .section {
     padding: 4.5rem 3vw;
 
-    @media (min-width: 1024px) {
+    @media (min-width: $md) {
         padding: 6rem 2.4rem;
+    }
+
+    @media (min-width: $lg) {
+        padding: 10rem 2.4rem;
     }
 }
 
