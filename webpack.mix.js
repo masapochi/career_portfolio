@@ -19,6 +19,13 @@ mix.browserSync({
         './routes/**/*',
         './public/**/*'
     ],
+    notify: {
+        styles: {
+            top: 'auto',
+            bottom: '20px',
+            right: 'auto'
+        }
+    },
     open: false,
     reloadOnRestart: true
 })

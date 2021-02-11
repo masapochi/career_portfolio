@@ -68,17 +68,26 @@
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="{{ config('app.url') }}">{{ config('app.name') }}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="navbar-brand font-serif fw-bold" href="{{ config('app.url') }}">{{ config('app.name') }}</a>
+      <span id="js-toggler" class="toggler p-2" type="button" aria-label="Toggle navigation">
+        <div class="toggler-bar bar-top" aria-hidden></div>
+        <div class="toggler-bar bar-mid" aria-hidden></div>
+        <div class="toggler-bar bar-bot" aria-hidden></div>
+      </span>
+      <div class="hidden-menu" id="js-navbar-content">
+        <ul class="navbar-nav hidden-menu-list ms-auto bg-dark" id="js-navbar-list">
           @foreach($menus as $menu)
             <li class="nav-item">
-              <a class="nav-link active" href="#{{ $menu->href }}">{{ $menu->label }}</a>
+              <a class="nav-link font-serif active px-3" href="#{{ $menu->href }}">{{ $menu->label }}</a>
             </li>
           @endforeach
+          <li class="nav-item nav-item-sns d-flex d-lg-none">
+            @foreach($snses as $sns)
+              <a class="nav-link mx-2" href="{{ $sns->href }}" target="_blank" rel="noopener">
+                <img class="img-fluid rounded-circle shadow-sm" src="{{ asset("./images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
+              </a>
+            @endforeach
+          </li>
         </ul>
       </div>
     </div>
@@ -87,31 +96,48 @@
 
   <main>
 
-    <section class="home section" id="home">
-      <h1 class="home__title">Home</h1>
-      <h2 class="home__subtitle">
-        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-      </h2>
+    <section class="section home" id="home">
 
-      <video class="home__video" poster="{{ asset('./movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
-        <source src="{{ asset('./movies/hero.mp4') }}" type="video/mp4">
-      </video>
+      <div class="hero-bg">
+        <video class="hero-bg-video" poster="{{ asset('./movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
+          <source src="{{ asset('./movies/hero.mp4') }}" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero">
+
+        <h1 class="hero-heading" id="js-hero-main">
+          <div class="h3 hero-subtitle" id="js-hero-main-small">I'm loving</div>
+          <div class="h1 hero-title" id="js-hero-main-large">Beautiy in the Code</span>
+        </h1>
+
+        {{-- <div class="hero-lead">
+          <div class="hero-lead-line" id="js-sub-line" aria-hidden></div>
+          <p class="h5 text-white hero-lead-text" id="js-sub-desc">
+            Readable code enhances usability, productivity and maintainability.
+          </p>
+        </div> --}}
+
+        <a class="cta btn btn-lg btn-outline-light rounded-0 shadow" id="js-cta" href="#works">Browse Works</a>
+
+      </div>
+
     </section>
 
-    <section class="section">
+    <section class="section introduction" id="introduction">
       <div class="container">
         <p class="h5 lh-base text-center">I’m a Japan based Frontend & Backend developer, UI/UX designer<br>focused on crafting clean & user‑friendly experiences.</p>
       </div>
     </section>
 
-    <section class="section" id="services">
+    <section class="section services" id="services">
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Services</h1>
-          <div class="col-xl-8 px-xl-0">
+          <div class="content col-xl-8 px-xl-0">
             <div class="row g-5 justify-content-center">
               @foreach($services as $service)
-                <section class="col-md-6 col-lg-4 text-center">
+                <section class="js-service col-md-6 col-lg-4 text-center">
                   <figure class="px-4 px-md-0">
                     <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="" height="" loading="lazy" decoding="async">
                   </figure>
@@ -125,11 +151,11 @@
       </div>
     </section>
 
-    <section class="section" id="works">
+    <section class="section works" id="works">
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Works</h1>
-          <div class="col-xl-8 px-xl-0">
+          <div class="content col-xl-8 px-xl-0">
             <div class="row g-5">
               @foreach($works as $work)
                 <section class="col-12">
@@ -167,11 +193,11 @@
     </section>
 
 
-    <section class="section" id="biography">
+    <section class="section biography" id="biography">
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Biography</h1>
-          <section class="col-xl-8 px-xl-0">
+          <section class="content col-xl-8 px-xl-0">
             <div class="row g-5">
               <div class="profile col-lg-5">
                 <figure class="text-center">
@@ -231,11 +257,11 @@
       </div>
     </section>
 
-    <section class="section" id="skills">
+    <section class="section skills" id="skills">
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Skills</h1>
-          <div class="col-xl-8 px-xl-0">
+          <div class="content col-xl-8 px-xl-0">
             <div class="row g-4 g-md-5">
               @foreach($skills as $skill)
                 <section class="col-6 col-md-4 text-center">
@@ -252,12 +278,11 @@
       </div>
     </section>
 
-
-    <section class="section" id="contact">
+    <section class="section contact" id="contact">
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Contact</h1>
-          <form class="col-xl-8 px-xl-0">
+          <form class="content col-xl-8 px-xl-0">
             <div class="row gx-4 gy-3">
               <div class="col-md-6">
                 <label for="inputName" class="form-label fw-bold font-serif">Name</label>
@@ -296,7 +321,7 @@
     </div>
   </footer>
 
-  <div class="position-fixed bottom-0 end-0 me-3 mb-3">
+  <div id="js-gotop" class="gotop position-fixed bottom-0 end-0 me-3 mb-3">
     <a class="btn btn-light rounded-0 border shadow" href="#top" aria-label="Go To Page Top">
       <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
@@ -304,8 +329,13 @@
     </a>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script> --}}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+  <script src="{{ asset('./js/app.js') }}">
 
+
+  </script>
 </body>
 
 </html>

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;700&display=swap');
 
 @mixin font-serif {
     font-family: "Libre Baskerville",
@@ -11,6 +10,10 @@ $md: 768px;
 $lg: 992px;
 $xl:1200px;
 $xxl: 1400px;
+
+$header-height: 56px;
+$sm-hero-max-height: 736px;
+$md-hero-height: 100vh;
 
 // Utilities
 .text-center {
@@ -31,36 +34,21 @@ body {
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.05em;
+
+    &.fixed {
+        overflow: hidden;
+    }
+}
+
+.navbar-nav {
+    @media (min-width: $lg) {
+        margin-right: -2.5rem;
+    }
 }
 
 section.section:nth-child(odd) {
     background: #fff;
 }
-
-.home {
-    position: relative;
-    height: 100vh;
-
-    .home__video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
-
-    }
-
-    .home__title,
-    .home__subtitle {
-        position: absolute;
-        z-index: 31;
-    }
-}
-
-
-body {}
 
 .title {
     font-size: calc(1.625rem + 4.5vw);
@@ -96,8 +84,163 @@ body {}
     @media (min-width: $lg) {
         width: 100%;
     }
+}
 
-    @media (min-width: $xl) {
+
+.home {
+    position: relative;
+    padding: 0;
+    height: 100vh;
+
+    @media (max-width: $md - 1px) {
+        max-height: $sm-hero-max-height;
+    }
+}
+
+.hero-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px);
+}
+
+.hero-bg:after {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(56px + 20vh) 0;
+
+    @media (min-height: 1024px) {
+        padding: calc(56px + 24vh) 0;
+    }
+}
+
+.hero-heading {
+    @include font-serif;
+    width: 100%;
+    padding: 0 4vw;
+    border-bottom: 2px solid #dcdcdc;
+
+    @media (min-width: $md) {
+        padding: 0 8vw;
+    }
+
+}
+
+.hero-subtitle,
+.hero-title {
+    white-space: nowrap;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.25rem, 5vw, 2.5rem);
+
+}
+
+.hero-title {
+    font-size: clamp(1.5rem, 9vw, 5.25rem);
+    margin-bottom: 2vw;
+
+    @media (min-width: $lg) {
+        margin-bottom: 1vw;
+    }
+}
+
+.cta {
+    padding: clamp(.5rem, 3vw, .75rem) clamp(1rem, 3vw, 2rem);
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+
+}
+
+.navbar .container {
+    position: relative;
+}
+
+@media (max-width: $lg - 1px) {
+    .hidden-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
         width: 100%;
+        height: 100%;
+        padding-top: $header-height;
+        overflow: auto;
+        transition: clip-path .3s ease;
+        clip-path: circle(0%);
+
+        // &.show {
+        //     clip-path: circle(100%);
+
+        // }
+    }
+
+    .hidden-menu-list {
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+        padding: 8vh 0;
+        background-color: #434343 !important;
+    }
+
+    .nav-item-sns {
+        margin-top: 8vh;
+    }
+
+    .nav-link {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+}
+
+.toggler {
+    position: absolute;
+    top: 50%;
+    right: .5rem;
+    transform: translateY(-50%);
+    z-index: 1000;
+
+    @media (min-width: $lg) {
+        display: none;
+    }
+}
+
+.toggler-bar {
+    width: 24px;
+    height: 1px;
+    background: #fff;
+
+    &:not(:last-child) {
+        margin-bottom: 7px;
+    }
+}
+
+.gotop {
+    display: none;
+
+    &.show {
+        display: block;
     }
 }
