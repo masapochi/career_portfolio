@@ -46,19 +46,27 @@ Route::get('/', function () {
     $works = json_decode(json_encode([
         [
             'title' => 'Catalog Demo',
-            'desc'  => 'Catalog Demo" using Lorem Ipsum.Catalog Demo" using Lorem Ipsum.Catalog Demo" using Lorem Ipsum.Catalog Demo" using Lorem Ipsum.',
+            'desc'  => '"Lorem Ipsum（ダミーテキスト）"を利用した仮想の商品カタログです。カテゴリ・キーワードで商品を検索できます。',
             'image' => 'works/ogp.jpg',
+            'tags'  => ['Laravel', 'GSAP', 'SQLite'],
             'href'  => 'https://masapochi.me/catalog/',
             'git'   => 'https://github.com/masapochi/products-catalog/',
-            'rel'   => false,
         ],
         [
             'title' => 'Thumbs Game',
-            'desc'  => 'Everyone knows it, but no one knows it\'s name...',
+            'desc'  => 'みんな知っているけれど、名前はだれも知らないあの親指ゲームです。PWA対応。アプリとしてインストール可能です。',
             'image' => 'works/ogp.jpg',
+            'tags'  => ['Laravel', 'Vue.js', 'PWA'],
             'href'  => 'https://masapochi.me/that-game/',
             'git'   => 'https://github.com/masapochi/that-game/',
-            'rel'   => false,
+        ],
+        [
+            'title' => 'This Portfolio',
+            'desc'  => 'このポートフォリオページです。',
+            'image' => 'works/ogp.jpg',
+            'tags'  => ['Laravel', 'GSAP', 'Bootstrap'],
+            'href'  => '',
+            'git'   => 'https://github.com/masapochi/that-game/',
         ],
     ]));
 
