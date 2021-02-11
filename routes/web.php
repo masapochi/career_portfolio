@@ -49,24 +49,44 @@ Route::get('/', function () {
             'desc'  => '"Lorem Ipsum（ダミーテキスト）"を利用した仮想の商品カタログです。カテゴリ・キーワードで商品を検索できます。',
             'image' => 'works/ogp.jpg',
             'tags'  => ['Laravel', 'GSAP', 'SQLite'],
-            'href'  => 'https://masapochi.me/catalog/',
-            'git'   => 'https://github.com/masapochi/products-catalog/',
+            'links' => [
+                [
+                    'label' => 'Live',
+                    'href' => 'https://masapochi.me/catalog/'
+                ],
+                [
+                    'label' => 'Github',
+                    'href' => 'https://github.com/masapochi/products-catalog/'
+                ],
+            ],
         ],
         [
             'title' => 'Thumbs Game',
             'desc'  => 'みんな知っているけれど、名前はだれも知らないあの親指ゲームです。PWA対応。アプリとしてインストール可能です。',
             'image' => 'works/ogp.jpg',
             'tags'  => ['Laravel', 'Vue.js', 'PWA'],
-            'href'  => 'https://masapochi.me/that-game/',
-            'git'   => 'https://github.com/masapochi/that-game/',
+            'links' => [
+                [
+                    'label' => 'Live',
+                    'href' => 'https://masapochi.me/that-game/'
+                ],
+                [
+                    'label' => 'Github',
+                    'href' => 'https://github.com/masapochi/that-game/'
+                ],
+            ],
         ],
         [
             'title' => 'This Portfolio',
             'desc'  => 'このポートフォリオページです。',
             'image' => 'works/ogp.jpg',
             'tags'  => ['Laravel', 'GSAP', 'Bootstrap'],
-            'href'  => '',
-            'git'   => 'https://github.com/masapochi/that-game/',
+            'links' => [
+                [
+                    'label' => 'Github',
+                    'href' => 'https://github.com/masapochi/career_portfolio/'
+                ],
+            ],
         ],
     ]));
 
