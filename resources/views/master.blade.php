@@ -12,7 +12,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Google Tag Manager -->
-  <script>
+  {{-- <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({
@@ -30,7 +30,7 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NTVPCDX');
 
-  </script>
+  </script> --}}
   <!-- End Google Tag Manager -->
 
   <title>{{ config('app.name') }}</title>
@@ -64,7 +64,7 @@
 
 <body id="top">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTVPCDX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTVPCDX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
   <!-- End Google Tag Manager (noscript) -->
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -331,14 +331,13 @@
     </a>
   </div>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="//unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
   <script src="//unpkg.com/vuejs-datepicker/dist/locale/translations/ja.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
   <script src="{{ asset('./js/app.js') }}"></script>
   <script src="{{ asset('./js/contact.js') }}"></script>
 </body>
