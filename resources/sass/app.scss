@@ -162,6 +162,12 @@ section.section:nth-child(odd) {
     min-width: 160px;
 }
 
+.contact-input {
+    @media (max-width: $md) {
+        font-size: 1rem;
+    }
+}
+
 // Home Section
 .home {
     position: relative;

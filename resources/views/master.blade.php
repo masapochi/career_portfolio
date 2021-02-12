@@ -9,6 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Google Tag Manager -->
   <script>
@@ -271,30 +272,46 @@
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Contact</h1>
-          <form action="{{ route('message') }}" class="content col-xl-8 px-xl-0">
-            <div class="row gx-4 gy-3">
-              <div class="col-md-6">
-                <label for="inputName" class="form-label fw-bold font-serif">Name</label>
-                <input id="inputName" type="text" class="form-control form-control-lg rounded-0 is-valid">
-              </div>
-              <div class="col-md-6">
-                <label for="inputEmail" class="form-label fw-bold font-serif">Email</label>
-                <input id="inputEmail" type="email" class="form-control form-control-lg rounded-0 is-invalid">
-                <div class="invalid-feedback">Please choose a username.</div>
-              </div>
-              <div class="col-12">
-                <label for="inputSubject" class="form-label fw-bold font-serif">Subject</label>
-                <input id="inputSubject" type="text" class="form-control form-control-lg rounded-0">
-              </div>
-              <div class="col-12">
-                <label for="inputMessage" class="form-label fw-bold font-serif">Message</label>
-                <textarea id="inputMessage" rows="3" class="form-control form-control-lg rounded-0"></textarea>
-              </div>
-              <div class="col-12 text-center mt-4">
-                <button type="submit" class="contact-submit btn btn-lg btn-secondary rounded-0">Send</button>
-              </div>
+
+          <validation-observer ref="observer" tag="div" class="content col-xl-8 px-xl-0" v-slot="{ invalid, handleSubmit }">
+
+            <div class="alert shadow-sm" :class="'alert-' + state" role="alert" v-if="state">
+              @{{ notification }}
             </div>
-          </form>
+
+            <form class="row gx-4 gy-3" @submit.prevent="handleSubmit(onSubmit)">
+
+              <validation-provider tag="div" class="col-md-6" rules="required|max:100" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Name</label>
+                <input type="text" :class="[formInputClass, classes]" v-model="form.name">
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
+
+              <validation-provider tag="div" class="col-md-6" rules="required|email|max:100" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Email</label>
+                <input type="text" :class="[formInputClass, classes]" v-model="form.email">
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
+
+              <validation-provider tag="div" class="col-12" rules="required|max:255" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Subject</label>
+                <input type="text" class="form-control form-control-lg rounded-0" :class="[formInputClass, classes]" v-model="form.subject">
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
+
+              <validation-provider tag="div" class="col-12" rules="required|max:255" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Message</label>
+                <textarea rows="3" :class="[formInputClass, classes]" v-model="form.message"></textarea>
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
+
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="contact-submit btn btn-lg btn-secondary rounded-0" :class="{ 'disabled': invalid }">Send</button>
+              </div>
+
+            </form>
+
+          </validation-observer>
         </div>
       </div>
     </section>
@@ -314,28 +331,16 @@
     </a>
   </div>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
-  {{-- <script src="{{ asset('./js/app.js') }}"> --}}
-  {{-- </script> --}}
-
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-  <script>
-    new Vue({
-      el: '#contact',
-      data: {
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      },
-      mounted() {
-        console.log('mounted');
-      }
-    })
-
-  </script>
+  <script src="//unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+  <script src="//unpkg.com/vuejs-datepicker/dist/locale/translations/ja.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
+  <script src="{{ asset('./js/app.js') }}"></script>
+  <script src="{{ asset('./js/contact.js') }}"></script>
 </body>
 
 </html>

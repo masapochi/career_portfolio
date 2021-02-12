@@ -9,7 +9,7 @@ use App\Mail\MessageNotification;
 
 class HomeController extends Controller
 {
-    function index()
+    public function index()
     {
         $skills = json_decode(json_encode([
             [
@@ -184,33 +184,28 @@ class HomeController extends Controller
         return view('master', compact('menus', 'services', 'works', 'skills', 'careers', 'snses'));
     }
 
-    public function message(MessageRequest $request)
     // public function message(Request $request)
+    public function message(MessageRequest $request)
     {
-        // dd($request->all());
         $validated = $request->validated();
 
         try {
-            $message = 'Your message has been successfully sent.';
-            $isSuccess = true;
+            // throw new \Exception("Dummy Error", 1);
 
-            throw new \Exception("Error Processing Request", 1);
-            // echo 'aaaaaaaaaa';
-            $res =  Mail::to($request
+            Mail::to($request
                 ->get('email'))
                 ->send(new MessageNotification($request->all()));
+
+            return response()->json([
+                'state'        => 'success',
+                'notification' => 'Your message has been successfully sent.',
+            ], 200);
         } catch (\Exception $e) {
-            // dd($e->getMessage());
-            // echo $e->getMessage();
-            $message = 'Sorry, something is wrong... Please try again.';
-            $isSuccess = false;
-        } finally {
-            // dd($message, $isSuccess);
-            // $request->session()->flash('isSuccess', $isSuccess);
-            // $request->session()->flash('msg', $message);
-            return redirect()
-                ->route('home', ['#contact'])
-                ->with(['msg' => $message, 'isSuccess' => $isSuccess]);
+
+            return response()->json([
+                'state'        => 'danger',
+                'notification' => 'Sorry, something is wrong... Please try again.',
+            ], 500);
         }
     }
 }
