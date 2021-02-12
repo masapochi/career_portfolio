@@ -15,3 +15,5 @@ yarn-error.log
 
 /docs/outline.md
 /docs/summary.md
+
+/resources/views/master.blade copy.php

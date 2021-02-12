@@ -271,7 +271,60 @@
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Contact</h1>
-          <form class="content col-xl-8 px-xl-0">
+          {{-- @php
+            $labelClass = ['class' => 'form-label fw-bold font-serif'];
+
+            $validateClass = function($field) use ($errors) {
+            $baseClass = 'form-control form-control-lg rounded-0';
+            $class = '';
+            if ($errors->has($field)) $class = "is-invalid";
+            if (old($field) && !$errors->has($field)) $class = "is-valid";
+            return "{$class} {$baseClass}";
+            }
+
+@endphp
+          {!! Form::open(['route' => 'message', 'class' => 'content col-xl-8 px-xl-0'])!!}
+          {{ session()->has('mgs') }}
+          @if(session()->has('mgs'))
+            {{ session('msg') }}
+            aaaaaaaa
+            {{ session('isSuccess') ? 'success' : 'failure' }}
+            <div role="alert" class="alert alert-{{ session('isSuccess') ? 'success' : 'failure' }}">
+              {{ session('msg') }}
+            </div>
+          @endif
+
+          <div class="row gx-4 gy-3">
+            <div class="col-md-6">
+              {!! Form::label('name', 'Name', $labelClass) !!}
+              {!! Form::text('name', old('name'), ['class' => $validateClass('name')]) !!}
+              <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+            </div>
+
+            <div class="col-md-6">
+              {!! Form::label('email', 'Email', $labelClass) !!}
+              {!! Form::text('email', old('email'), ['class' => $validateClass('email')]) !!}
+              <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+            </div>
+
+            <div class="col-12">
+              {!! Form::label('subject', 'Subject', $labelClass) !!}
+              {!! Form::text('subject', old('subject'), ['class' => $validateClass('subject')]) !!}
+              <div class="invalid-feedback">{{ $errors->first('subject') }}</div>
+            </div>
+
+            <div class="col-12">
+              {!! Form::label('message', 'Message', $labelClass) !!}
+              {!! Form::textarea('message', old('message'), ['class' => $validateClass('message')]) !!}
+              <div class="invalid-feedback">{{ $errors->first('message') }}</div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+              {!! Form::button('Send', $attributes=['type' => 'submit', 'class' => 'contact-submit btn btn-lg btn-secondary rounded-0']) !!}
+            </div>
+          </div>
+          {!! Form::close() !!} --}}
+          <form action="{{ route('message') }}" class="content col-xl-8 px-xl-0">
             <div class="row gx-4 gy-3">
               <div class="col-md-6">
                 <label for="inputName" class="form-label fw-bold font-serif">Name</label>
@@ -316,8 +369,24 @@
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
-  <script src="{{ asset('./js/app.js') }}">
+  {{-- <script src="{{ asset('./js/app.js') }}"> --}}
+  {{-- </script> --}}
 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#contact',
+      data: {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      }
+      mounted() {
+        console.log('mounted');
+      }
+    })
 
   </script>
 </body>
