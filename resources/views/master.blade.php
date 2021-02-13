@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex,nofollow">
 
   <!-- Google Tag Manager -->
-  {{-- <script>
+  <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({
@@ -26,7 +26,7 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NTVPCDX');
 
-  </script> --}}
+  </script>
   <!-- End Google Tag Manager -->
 
   <title>{{ config('app.name') }}</title>
@@ -65,7 +65,7 @@
 
 <body id="top">
   <!-- Google Tag Manager (noscript) -->
-  {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTVPCDX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTVPCDX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
