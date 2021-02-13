@@ -86,7 +86,7 @@
           <li class="nav-item nav-item-sns d-flex d-lg-none">
             @foreach($snses as $sns)
               <a class="nav-link mx-2" href="{{ $sns->href }}" target="_blank" rel="noopener">
-                <img class="img-fluid rounded-circle shadow-sm" src="{{ asset("images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
+                <img class="img-fluid rounded-circle shadow-sm" src="{{ asset("images/{$sns->image}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
               </a>
             @endforeach
           </li>
@@ -101,7 +101,7 @@
     <section class="section home" id="home">
 
       <div class="hero-bg">
-        <video class="hero-bg-video" poster="{{ asset('movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
+        <video class="hero-bg-video" poster="{{ asset('movies/hero_poster.jpg') }}" preload playsinline autoplay muted loop>
           <source src="{{ asset('movies/hero.mp4') }}" type="video/mp4">
         </video>
       </div>
@@ -134,7 +134,10 @@
               @foreach($services as $service)
                 <section class="js-service col-md-6 col-lg-4 text-center">
                   <figure class="px-4 px-md-0">
-                    <img class="img-fluid shadow-sm" src="{{ asset("images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="640" height="427" loading="lazy" decoding="async">
+                    <picture>
+                      <source type="image/webp" srcset="{{ asset("images/{$service->image}") }}">
+                      <img class="img-fluid shadow-sm" src="{{ asset("images/{$service->fallback_image}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="640" height="427" loading="lazy" decoding="async">
+                    </picture>
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $service->label }}</h1>
                   <p class="fs-6 mb-0">{{ $service->desc }}</p>
@@ -156,7 +159,10 @@
                 <section class="col-12 work">
                   <div class="row g-0 gx-md-5 gx-lg-5">
                     <figure class="col-md-5 col-lg-5 mb-md-0">
-                      <img class="img-fluid border border-light shadow-sm" src="{{ asset("images/{$work->image}") }}" alt="{{ $work->title }}" width="360" height="180" loading="lazy" decoding="async">
+                      <picture>
+                        <source type="image/webp" srcset="{{ asset("images/{$work->image}") }}">
+                        <img class="img-fluid border border-light shadow-sm" src="{{ asset("images/{$work->fallback_image}") }}" alt="{{ $work->title }}" width="360" height="180" loading="lazy" decoding="async">
+                      </picture>
                     </figure>
                     <div class="col-md-7 col-lg-7">
                       <h1 class="h5 mb-3 fw-bold font-serif">{{ $work->title }}</h1>
@@ -203,7 +209,7 @@
                 <div class="text-center">
                   @foreach($snses as $sns)
                     <a class="px-1 text-decoration-none" href="{{ $sns->href }}" target="_blank" rel="noopener">
-                      <img class="img-fluid shadow-sm rounded-circle" src="{{ asset("images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
+                      <img class="img-fluid shadow-sm rounded-circle" src="{{ asset("images/{$sns->image}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
                     </a>
                   @endforeach
                 </div>
@@ -260,7 +266,7 @@
               @foreach($skills as $skill)
                 <section class="col-6 col-md-4 text-center">
                   <figure class="mb-0">
-                    <img src="{{ asset("images/{$skill->file}") }}" alt="{{ $skill->label }}" width="104" height="104" loading="lazy" decoding="async">
+                    <img src="{{ asset("images/{$skill->image}") }}" alt="{{ $skill->label }}" width="104" height="104" loading="lazy" decoding="async">
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $skill->label }}</h1>
                   <p class="fs-6 mb-0">{!! $skill->detail !!}</p>
