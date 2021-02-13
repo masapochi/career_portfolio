@@ -156,7 +156,7 @@
                 <section class="col-12 work">
                   <div class="row g-0 gx-md-5 gx-lg-5">
                     <figure class="col-md-5 col-lg-5 mb-md-0">
-                      <img class="img-fluid shadow-sm" src="{{ asset("images/{$work->image}") }}" alt="{{ $work->title }}" width="360" height="180" loading="lazy" decoding="async">
+                      <img class="img-fluid border border-light shadow-sm" src="{{ asset("images/{$work->image}") }}" alt="{{ $work->title }}" width="360" height="180" loading="lazy" decoding="async">
                     </figure>
                     <div class="col-md-7 col-lg-7">
                       <h1 class="h5 mb-3 fw-bold font-serif">{{ $work->title }}</h1>
