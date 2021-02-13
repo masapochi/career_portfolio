@@ -36,7 +36,7 @@ $md-hero-height: 100vh;
 // Base, Common
 html {
     @include font-family-base;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 body {
@@ -44,7 +44,7 @@ body {
     background: #f2f2f2;
     @include font-family-base;
     color: #4a4a4a;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.5;
     letter-spacing: 0.05em;
     word-break: break-word;
@@ -148,7 +148,8 @@ section.section:nth-child(odd) {
 // Works Section
 
 .work-tag {
-    font-size: .8rem;
+    font-size: .75rem;
+    // font-weight: 300 ;
 }
 
 .work-link {
