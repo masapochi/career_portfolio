@@ -113,7 +113,7 @@
           <div class="h1 hero-title" id="js-hero-title">Beautiy in the Code</div>
         </h1>
 
-        <a class="cta btn btn-lg btn-outline-light rounded-0 shadow" id="js-hero-cta" href="#works">Browse Works</a>
+        <a class="cta btn btn-lg btn-outline-light border border-1 fw-light rounded-0 shadow" id="js-hero-cta" href="#works">Browse Works</a>
 
       </div>
 
