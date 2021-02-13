@@ -133,7 +133,7 @@
             <div class="row g-5 justify-content-center">
               @foreach($services as $service)
                 <section class="js-service col-md-6 col-lg-4 text-center">
-                  <figure>
+                  <figure class="px-3 px-md-0">
                     <picture>
                       <source type="image/webp" srcset="{{ asset("images/{$service->image}") }}">
                       <img class="img-fluid shadow-sm" src="{{ asset("images/{$service->fallback_image}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="640" height="427" loading="lazy" decoding="async">
@@ -169,7 +169,7 @@
                       <p class="mb-4">{{ $work->desc }}</p>
                       <div class="mb-2 d-flex flex-wrap align-items-center">
                         @foreach($work->tags as $tag)
-                          <small class="work-tag mb-1 badge fw-light border rounded-0 bg-white me-1 text-secondary">{{ $tag }}</small>
+                          <small class="work-tag mb-1 badge fw-normal border rounded-0 bg-white me-1 text-secondary">{{ $tag }}</small>
                         @endforeach
                       </div>
                       <div class="mt-auto">
@@ -269,7 +269,7 @@
                     <img src="{{ asset("images/{$skill->image}") }}" alt="{{ $skill->label }}" width="104" height="104" loading="lazy" decoding="async">
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $skill->label }}</h1>
-                  <p class="skill-detail fw-light mb-0">{!! $skill->detail !!}</p>
+                  <p class="skill-detail mb-0">{!! $skill->detail !!}</p>
                 </section>
               @endforeach
             </div>
