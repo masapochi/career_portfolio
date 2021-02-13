@@ -133,7 +133,7 @@
             <div class="row g-5 justify-content-center">
               @foreach($services as $service)
                 <section class="js-service col-md-6 col-lg-4 text-center">
-                  <figure class="px-3 px-md-0">
+                  <figure>
                     <picture>
                       <source type="image/webp" srcset="{{ asset("images/{$service->image}") }}">
                       <img class="img-fluid shadow-sm" src="{{ asset("images/{$service->fallback_image}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="640" height="427" loading="lazy" decoding="async">
