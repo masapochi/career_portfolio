@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ease: 'power2.ease',
         },
         scrollTrigger: {
+          // markers: true,
           trigger: sec,
           toggleActions: "play reverse play reverse"
         }

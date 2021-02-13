@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
-@php
-  // dd($skills);
-@endphp
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Google Tag Manager -->
   {{-- <script>
@@ -35,30 +31,35 @@
 
   <title>{{ config('app.name') }}</title>
   <meta name="description" content="{{ config('app.description') }}">
-  <link href="https://masapochi.me/" rel="canonical">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@__masapochi__">
   <meta name="twitter:creator" content="@__masapochi__">
   <meta name="twitter:url" content="https://masapochi.me/">
-  <meta name="twitter:title" content="">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="https://masapochi.me/">
+  <meta name="twitter:title" content="{{ config('app.name') }}">
+  <meta name="twitter:description" content="{{ config('app.description') }}">
+  <meta name="twitter:image" content="{{ asset('images/ogp.png') }}">
 
   <!-- Facebook OGP -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="masapochi.me">
   <meta property="og:url" content="https://masapochi.me/">
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="https://masapochi.me/">
+  <meta property="og:title" content="{{ config('app.name') }}">
+  <meta property="og:description" content="{{ config('app.description') }}">
+  <meta property="og:image" content="{{ asset('images/ogp.png') }}">
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <!-- Canonical, Favicon -->
+  <link href="https://masapochi.me/" rel="canonical">
+  <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
 
   <!-- Css -->
-  {{-- <link href="https://cdn.jsdelivr.net/npm/cssremedy@0.1.0-beta.2/css/remedy.css" rel="stylesheet"> --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> --}}
+
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 
@@ -100,8 +101,8 @@
     <section class="section home" id="home">
 
       <div class="hero-bg">
-        <video class="hero-bg-video" poster="{{ asset('./movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
-          <source src="{{ asset('./movies/hero.mp4') }}" type="video/mp4">
+        <video class="hero-bg-video" poster="{{ asset('movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
+          <source src="{{ asset('movies/hero.mp4') }}" type="video/mp4">
         </video>
       </div>
 
@@ -331,15 +332,17 @@
     </a>
   </div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+
   <script src="//cdn.jsdelivr.net/npm/vue@2"></script>
   <script src="//unpkg.com/axios/dist/axios.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
   <script src="//unpkg.com/vuejs-datepicker/dist/locale/translations/ja.js"></script>
   <script src="//cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
-  <script src="{{ asset('./js/app.js') }}"></script>
-  <script src="{{ asset('./js/contact.js') }}"></script>
+  <script src="{{ asset('js/contact.js') }}"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
