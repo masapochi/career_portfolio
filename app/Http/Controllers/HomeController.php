@@ -90,7 +90,7 @@ class HomeController extends Controller
                 'title' => 'This Portfolio',
                 'desc'  => 'このポートフォリオページです。',
                 'image' => 'works/ogp.jpg',
-                'tags'  => ['Laravel', 'GSAP', 'Bootstrap'],
+                'tags'  => ['Laravel', 'Vue.js', 'VeeValidate', 'GSAP', 'Bootstrap'],
                 'links' => [
                     [
                         'label' => 'Github',
@@ -126,12 +126,12 @@ class HomeController extends Controller
         $snses = json_decode(json_encode([
             [
                 'label' => 'Twitter',
-                'href'  => 'https://twitter.com/__masapochi__',
+                'href'  => config('app.sns.twitter'),
                 'file' => 'sns/twitter.svg',
             ],
             [
                 'label' => 'Github',
-                'href'  => 'https://github.com/masapochi',
+                'href'  => config('app.sns.github'),
                 'file' => 'sns/github.svg',
             ],
         ]));

@@ -67,7 +67,6 @@
 		.footer a {
 			color: cadetblue;
 		}
-
 	</style>
 </head>
 
@@ -90,19 +89,23 @@
 		</div>
 
 		<div class="block">
-			<p class="bold">Your Message :</p>
+			<p class="bold">Subject :</p>
+			<backquote>{{ $data['subject'] }}</backquote>
+		</div>
+
+		<div class="block">
+			<p class="bold">Message :</p>
 			<backquote>{{ $data['message'] }}</backquote>
 		</div>
 
 		<div class="block">
 			<p>Yours truly,</p>
-
 			<p>Masapochi</p>
 		</div>
 
 		<div class="footer">
-			<p>WEB: <a href="https://masapochi.me" target="_blank">https://masapochi.me</a></p>
-			<p>Twitter: <a href="https://twitter.com/__masapochi__" target="_blank">@@__masapochi__</a></p>
+			<p>WEB : <a href="https://masapochi.me" target="_blank">https://masapochi.me</a></p>
+			<p>Twitter : <a href="https://twitter.com/__masapochi__" target="_blank">@@__masapochi__</a></p>
 		</div>
 	</div>
 </body>

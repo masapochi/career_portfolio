@@ -72,9 +72,9 @@
     <div class="container">
       <a class="navbar-brand font-serif fw-bold" href="{{ config('app.url') }}">{{ config('app.name') }}</a>
       <span id="js-toggler" class="toggler p-2" type="button" aria-label="Toggle navigation">
-        <div id="js-bar-top" class="toggler-bar" aria-hidden></div>
-        <div id="js-bar-mid" class="toggler-bar" aria-hidden></div>
-        <div id="js-bar-bot" class="toggler-bar" aria-hidden></div>
+        <div id="js-bar-top" class="toggler-bar" aria-hidden="true"></div>
+        <div id="js-bar-mid" class="toggler-bar" aria-hidden="true"></div>
+        <div id="js-bar-bot" class="toggler-bar" aria-hidden="true"></div>
       </span>
       <div class="hidden-menu" id="js-navbar-content">
         <ul class="navbar-nav hidden-menu-list ms-auto bg-dark" id="js-navbar-list">
@@ -134,7 +134,7 @@
               @foreach($services as $service)
                 <section class="js-service col-md-6 col-lg-4 text-center">
                   <figure class="px-4 px-md-0">
-                    <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="" height="" loading="lazy" decoding="async">
+                    <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="320" height="217" loading="lazy" decoding="async">
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $service->label }}</h1>
                   <p class="fs-6 mb-0">{{ $service->desc }}</p>
@@ -156,14 +156,14 @@
                 <section class="col-12 work">
                   <div class="row g-0 gx-md-5 gx-lg-5">
                     <figure class="col-md-5 col-lg-5 mb-md-0">
-                      <img class="img-fluid shadow-sm" src="{{ asset("./images/{$work->image}") }}" alt="{{ $work->title }}" width="1206" height="630" loading="lazy" decoding="async">
+                      <img class="img-fluid shadow-sm" src="{{ asset("./images/{$work->image}") }}" alt="{{ $work->title }}" width="360" height="180" loading="lazy" decoding="async">
                     </figure>
                     <div class="col-md-7 col-lg-7">
                       <h1 class="h5 mb-3 fw-bold font-serif">{{ $work->title }}</h1>
                       <p class="mb-4">{{ $work->desc }}</p>
-                      <div class="mb-3 d-flex align-items-center">
+                      <div class="mb-2 d-flex flex-wrap align-items-center">
                         @foreach($work->tags as $tag)
-                          <small class="work-tag badge fw-normal border rounded-0 bg-white me-1 text-secondary">{{ $tag }}</small>
+                          <small class="work-tag mb-1 badge fw-normal border rounded-0 bg-white me-1 text-secondary">{{ $tag }}</small>
                         @endforeach
                       </div>
                       <div class="mt-auto">
@@ -177,6 +177,9 @@
                   </div>
                 </section>
               @endforeach
+              <p class="mb-0">
+                その他の実績にご興味がありましたら、<a class="text-body" href="{{ config('app.sns.twitter') }}" target="_blank" rel="noopener">SNS</a>または、<a class="text-body" href="#contact">フォーム</a>よりお問い合わせください。
+              </p>
             </div>
           </div>
         </div>
@@ -192,7 +195,7 @@
             <div class="row g-5">
               <div class="profile col-lg-5">
                 <figure class="text-center">
-                  <img class="avatar img-fluid rounded-circle shadow-sm bg-light border border-3 border-white" src="{{ asset("./images/about/me.svg") }}" alt="" width="" height="" loading="lazy" decoding="async">
+                  <img class="avatar img-fluid rounded-circle shadow-sm bg-light border border-3 border-white" src="{{ asset("./images/about/me.svg") }}" alt="Masapochi Avatar" width="354" height="354" loading="lazy" decoding="async">
                 </figure>
                 <h1 class="h2 text-center fw-bolder font-serif">Masapochi</h1>
                 <p class="text-center mb-4">フロント・バックエンドエンジニア<br>UI/UXデザイナー</p>
@@ -200,7 +203,7 @@
                 <div class="text-center">
                   @foreach($snses as $sns)
                     <a class="px-1 text-decoration-none" href="{{ $sns->href }}" target="_blank" rel="noopener">
-                      <img class="img-fluid" src="{{ asset("./images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
+                      <img class="img-fluid shadow-sm rounded-circle" src="{{ asset("./images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
                     </a>
                   @endforeach
                 </div>
@@ -307,7 +310,10 @@
               </validation-provider>
 
               <div class="col-12 text-center mt-4">
-                <button type="submit" class="contact-submit btn btn-lg btn-secondary rounded-0" :class="{ 'disabled': invalid }">Send</button>
+                <button type="submit" class="contact-submit btn btn-lg btn-secondary rounded-0" :class="{ 'disabled': invalid || isProcessing }">
+                  <span v-if="!isProcessing">Send</span>
+                  <span v-else>Sending...</span>
+                </button>
               </div>
 
             </form>
@@ -333,16 +339,16 @@
   </div>
 
 
-  <script src="//cdn.jsdelivr.net/npm/vue@2"></script>
-  <script src="//unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
-  <script src="//unpkg.com/vuejs-datepicker/dist/locale/translations/ja.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
-  <script src="{{ asset('js/contact.js') }}"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/vue@2"></script>
+  <script defer src="//unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+  <script defer src="//unpkg.com/vuejs-datepicker/dist/locale/translations/ja.js"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
+  <script defer src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script defer src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script defer src="{{ asset('js/contact.js') }}"></script>
+  <script defer src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
