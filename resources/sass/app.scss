@@ -168,6 +168,15 @@ section.section:nth-child(odd) {
     }
 }
 
+// Skills Section
+.skill-detail {
+    font-size: .875rem;
+
+    @media (min-width: $lg) {
+        font-size: 1rem;
+    }
+}
+
 // Contact Section
 .contact-submit {
     min-width: 160px;
