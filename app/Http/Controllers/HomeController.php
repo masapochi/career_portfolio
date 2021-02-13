@@ -55,10 +55,22 @@ class HomeController extends Controller
 
         $works = json_decode(json_encode([
             [
+                'title' => 'This Portfolio',
+                'desc'  => 'このポートフォリオページです。',
+                'image' => 'ogp.jpg',
+                'tags'  => ['Laravel', 'Vue.js', 'VeeValidate', 'GSAP', 'Bootstrap'],
+                'links' => [
+                    [
+                        'label' => 'Github',
+                        'href' => 'https://github.com/masapochi/career_portfolio/'
+                    ],
+                ],
+            ],
+            [
                 'title' => 'Catalog Demo',
                 'desc'  => '"Lorem Ipsum（ダミーテキスト）"を利用した仮想の商品カタログです。カテゴリ・キーワードで商品を検索できます。',
-                'image' => 'works/ogp.jpg',
-                'tags'  => ['Laravel', 'GSAP', 'SQLite'],
+                'image' => 'works/catalog.jpg',
+                'tags'  => ['Laravel', 'GSAP', 'SQLite', 'Bootstrap'],
                 'links' => [
                     [
                         'label' => 'Live',
@@ -73,8 +85,8 @@ class HomeController extends Controller
             [
                 'title' => 'Thumbs Game',
                 'desc'  => 'みんな知っているけれど、名前はだれも知らないあの親指ゲームです。PWA対応。アプリとしてインストール可能です。',
-                'image' => 'works/ogp.jpg',
-                'tags'  => ['Laravel', 'Vue.js', 'PWA'],
+                'image' => 'works/that_game.png',
+                'tags'  => ['Vue.js', 'PWA'],
                 'links' => [
                     [
                         'label' => 'Live',
@@ -86,18 +98,7 @@ class HomeController extends Controller
                     ],
                 ],
             ],
-            [
-                'title' => 'This Portfolio',
-                'desc'  => 'このポートフォリオページです。',
-                'image' => 'works/ogp.jpg',
-                'tags'  => ['Laravel', 'Vue.js', 'VeeValidate', 'GSAP', 'Bootstrap'],
-                'links' => [
-                    [
-                        'label' => 'Github',
-                        'href' => 'https://github.com/masapochi/career_portfolio/'
-                    ],
-                ],
-            ],
+
         ]));
 
         $careers = [
