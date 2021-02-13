@@ -331,7 +331,7 @@
   </footer>
 
   <div id="js-gotop" class="gotop position-fixed bottom-0 end-0 me-3 mb-3">
-    <a class="btn btn-light rounded-0 border shadow" href="#top" aria-label="Go To Page Top">
+    <a class="btn btn-light rounded-0 shadow" href="#top" aria-label="Go To Page Top">
       <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
       </svg>
@@ -347,7 +347,6 @@
   <script defer src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
   <script defer src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
-  <script defer src="{{ asset('js/contact.js') }}"></script>
   <script defer src="{{ asset('js/app.js') }}"></script>
 </body>
 
