@@ -134,7 +134,7 @@
               @foreach($services as $service)
                 <section class="js-service col-md-6 col-lg-4 text-center">
                   <figure class="px-4 px-md-0">
-                    <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="320" height="217" loading="lazy" decoding="async">
+                    <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="640" height="427" loading="lazy" decoding="async">
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $service->label }}</h1>
                   <p class="fs-6 mb-0">{{ $service->desc }}</p>
