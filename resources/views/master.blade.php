@@ -269,7 +269,7 @@
                     <img src="{{ asset("images/{$skill->image}") }}" alt="{{ $skill->label }}" width="104" height="104" loading="lazy" decoding="async">
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $skill->label }}</h1>
-                  <p class="fs-6 mb-0">{!! $skill->detail !!}</p>
+                  <p class="skill-detail mb-0">{!! $skill->detail !!}</p>
                 </section>
               @endforeach
             </div>
