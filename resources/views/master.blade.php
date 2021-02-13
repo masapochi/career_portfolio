@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-@php
-  // dd($skills);
-@endphp
 
 <head>
   <meta charset="utf-8">
@@ -11,7 +8,7 @@
   <meta name="robots" content="noindex,nofollow">
 
   <!-- Google Tag Manager -->
-  <script>
+  {{-- <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({
@@ -29,50 +26,55 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-NTVPCDX');
 
-  </script>
+  </script> --}}
   <!-- End Google Tag Manager -->
 
   <title>{{ config('app.name') }}</title>
   <meta name="description" content="{{ config('app.description') }}">
-  <link href="https://masapochi.me/" rel="canonical">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@__masapochi__">
   <meta name="twitter:creator" content="@__masapochi__">
   <meta name="twitter:url" content="https://masapochi.me/">
-  <meta name="twitter:title" content="">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="https://masapochi.me/">
+  <meta name="twitter:title" content="{{ config('app.name') }}">
+  <meta name="twitter:description" content="{{ config('app.description') }}">
+  <meta name="twitter:image" content="{{ asset('images/ogp.png') }}">
 
   <!-- Facebook OGP -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="masapochi.me">
   <meta property="og:url" content="https://masapochi.me/">
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="https://masapochi.me/">
+  <meta property="og:title" content="{{ config('app.name') }}">
+  <meta property="og:description" content="{{ config('app.description') }}">
+  <meta property="og:image" content="{{ asset('images/ogp.png') }}">
+
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <!-- Canonical, Favicon -->
+  <link href="https://masapochi.me/" rel="canonical">
+  <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
 
   <!-- Css -->
-  {{-- <link href="https://cdn.jsdelivr.net/npm/cssremedy@0.1.0-beta.2/css/remedy.css" rel="stylesheet"> --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"> --}}
+
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 
 <body id="top">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTVPCDX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTVPCDX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> --}}
   <!-- End Google Tag Manager (noscript) -->
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand font-serif fw-bold" href="{{ config('app.url') }}">{{ config('app.name') }}</a>
       <span id="js-toggler" class="toggler p-2" type="button" aria-label="Toggle navigation">
-        <div id="js-bar-top" class="toggler-bar" aria-hidden></div>
-        <div id="js-bar-mid" class="toggler-bar" aria-hidden></div>
-        <div id="js-bar-bot" class="toggler-bar" aria-hidden></div>
+        <div id="js-bar-top" class="toggler-bar" aria-hidden="true"></div>
+        <div id="js-bar-mid" class="toggler-bar" aria-hidden="true"></div>
+        <div id="js-bar-bot" class="toggler-bar" aria-hidden="true"></div>
       </span>
       <div class="hidden-menu" id="js-navbar-content">
         <ul class="navbar-nav hidden-menu-list ms-auto bg-dark" id="js-navbar-list">
@@ -99,8 +101,8 @@
     <section class="section home" id="home">
 
       <div class="hero-bg">
-        <video class="hero-bg-video" poster="{{ asset('./movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
-          <source src="{{ asset('./movies/hero.mp4') }}" type="video/mp4">
+        <video class="hero-bg-video" poster="{{ asset('movies/hero_poster.png') }}" preload playsinline autoplay muted loop>
+          <source src="{{ asset('movies/hero.mp4') }}" type="video/mp4">
         </video>
       </div>
 
@@ -132,7 +134,7 @@
               @foreach($services as $service)
                 <section class="js-service col-md-6 col-lg-4 text-center">
                   <figure class="px-4 px-md-0">
-                    <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="" height="" loading="lazy" decoding="async">
+                    <img class="img-fluid shadow-sm" src="{{ asset("./images/{$service->file}") }}" alt="{{ $service->label }} {{ $service->desc }}" width="320" height="217" loading="lazy" decoding="async">
                   </figure>
                   <h1 class="h5 fw-bold font-serif">{{ $service->label }}</h1>
                   <p class="fs-6 mb-0">{{ $service->desc }}</p>
@@ -154,14 +156,14 @@
                 <section class="col-12 work">
                   <div class="row g-0 gx-md-5 gx-lg-5">
                     <figure class="col-md-5 col-lg-5 mb-md-0">
-                      <img class="img-fluid shadow-sm" src="{{ asset("./images/{$work->image}") }}" alt="{{ $work->title }}" width="1206" height="630" loading="lazy" decoding="async">
+                      <img class="img-fluid shadow-sm" src="{{ asset("./images/{$work->image}") }}" alt="{{ $work->title }}" width="360" height="180" loading="lazy" decoding="async">
                     </figure>
                     <div class="col-md-7 col-lg-7">
                       <h1 class="h5 mb-3 fw-bold font-serif">{{ $work->title }}</h1>
                       <p class="mb-4">{{ $work->desc }}</p>
-                      <div class="mb-3 d-flex align-items-center">
+                      <div class="mb-2 d-flex flex-wrap align-items-center">
                         @foreach($work->tags as $tag)
-                          <small class="work-tag badge fw-normal border rounded-0 bg-white me-1 text-secondary">{{ $tag }}</small>
+                          <small class="work-tag mb-1 badge fw-normal border rounded-0 bg-white me-1 text-secondary">{{ $tag }}</small>
                         @endforeach
                       </div>
                       <div class="mt-auto">
@@ -175,6 +177,9 @@
                   </div>
                 </section>
               @endforeach
+              <p class="mb-0">
+                その他の実績にご興味がありましたら、<a class="text-body" href="{{ config('app.sns.twitter') }}" target="_blank" rel="noopener">SNS</a>または、<a class="text-body" href="#contact">フォーム</a>よりお問い合わせください。
+              </p>
             </div>
           </div>
         </div>
@@ -190,7 +195,7 @@
             <div class="row g-5">
               <div class="profile col-lg-5">
                 <figure class="text-center">
-                  <img class="avatar img-fluid rounded-circle shadow-sm bg-light border border-3 border-white" src="{{ asset("./images/about/me.svg") }}" alt="" width="" height="" loading="lazy" decoding="async">
+                  <img class="avatar img-fluid rounded-circle shadow-sm bg-light border border-3 border-white" src="{{ asset("./images/about/me.svg") }}" alt="Masapochi Avatar" width="354" height="354" loading="lazy" decoding="async">
                 </figure>
                 <h1 class="h2 text-center fw-bolder font-serif">Masapochi</h1>
                 <p class="text-center mb-4">フロント・バックエンドエンジニア<br>UI/UXデザイナー</p>
@@ -198,7 +203,7 @@
                 <div class="text-center">
                   @foreach($snses as $sns)
                     <a class="px-1 text-decoration-none" href="{{ $sns->href }}" target="_blank" rel="noopener">
-                      <img class="img-fluid" src="{{ asset("./images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
+                      <img class="img-fluid shadow-sm rounded-circle" src="{{ asset("./images/{$sns->file}") }}" alt="{{ $sns->label }}" width="48" height="48" loading="lazy" decoding="async">
                     </a>
                   @endforeach
                 </div>
@@ -271,83 +276,49 @@
       <div class="container">
         <div class="row g-5">
           <h1 class="title col-xl-4">Contact</h1>
-          {{-- @php
-            $labelClass = ['class' => 'form-label fw-bold font-serif'];
 
-            $validateClass = function($field) use ($errors) {
-            $baseClass = 'form-control form-control-lg rounded-0';
-            $class = '';
-            if ($errors->has($field)) $class = "is-invalid";
-            if (old($field) && !$errors->has($field)) $class = "is-valid";
-            return "{$class} {$baseClass}";
-            }
+          <validation-observer ref="observer" tag="div" class="content col-xl-8 px-xl-0" v-slot="{ invalid, handleSubmit }">
 
-@endphp
-          {!! Form::open(['route' => 'message', 'class' => 'content col-xl-8 px-xl-0'])!!}
-          {{ session()->has('mgs') }}
-          @if(session()->has('mgs'))
-            {{ session('msg') }}
-            aaaaaaaa
-            {{ session('isSuccess') ? 'success' : 'failure' }}
-            <div role="alert" class="alert alert-{{ session('isSuccess') ? 'success' : 'failure' }}">
-              {{ session('msg') }}
-            </div>
-          @endif
-
-          <div class="row gx-4 gy-3">
-            <div class="col-md-6">
-              {!! Form::label('name', 'Name', $labelClass) !!}
-              {!! Form::text('name', old('name'), ['class' => $validateClass('name')]) !!}
-              <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+            <div class="alert shadow-sm" :class="'alert-' + state" role="alert" v-if="state">
+              @{{ notification }}
             </div>
 
-            <div class="col-md-6">
-              {!! Form::label('email', 'Email', $labelClass) !!}
-              {!! Form::text('email', old('email'), ['class' => $validateClass('email')]) !!}
-              <div class="invalid-feedback">{{ $errors->first('email') }}</div>
-            </div>
+            <form class="row gx-4 gy-3" @submit.prevent="handleSubmit(onSubmit)">
 
-            <div class="col-12">
-              {!! Form::label('subject', 'Subject', $labelClass) !!}
-              {!! Form::text('subject', old('subject'), ['class' => $validateClass('subject')]) !!}
-              <div class="invalid-feedback">{{ $errors->first('subject') }}</div>
-            </div>
+              <validation-provider tag="div" class="col-md-6" rules="required|max:100" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Name</label>
+                <input type="text" :class="[formInputClass, classes]" v-model="form.name">
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
 
-            <div class="col-12">
-              {!! Form::label('message', 'Message', $labelClass) !!}
-              {!! Form::textarea('message', old('message'), ['class' => $validateClass('message')]) !!}
-              <div class="invalid-feedback">{{ $errors->first('message') }}</div>
-            </div>
+              <validation-provider tag="div" class="col-md-6" rules="required|email|max:100" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Email</label>
+                <input type="text" :class="[formInputClass, classes]" v-model="form.email">
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
 
-            <div class="col-12 text-center mt-4">
-              {!! Form::button('Send', $attributes=['type' => 'submit', 'class' => 'contact-submit btn btn-lg btn-secondary rounded-0']) !!}
-            </div>
-          </div>
-          {!! Form::close() !!} --}}
-          <form action="{{ route('message') }}" class="content col-xl-8 px-xl-0">
-            <div class="row gx-4 gy-3">
-              <div class="col-md-6">
-                <label for="inputName" class="form-label fw-bold font-serif">Name</label>
-                <input id="inputName" type="text" class="form-control form-control-lg rounded-0 is-valid">
-              </div>
-              <div class="col-md-6">
-                <label for="inputEmail" class="form-label fw-bold font-serif">Email</label>
-                <input id="inputEmail" type="email" class="form-control form-control-lg rounded-0 is-invalid">
-                <div class="invalid-feedback">Please choose a username.</div>
-              </div>
-              <div class="col-12">
-                <label for="inputSubject" class="form-label fw-bold font-serif">Subject</label>
-                <input id="inputSubject" type="text" class="form-control form-control-lg rounded-0">
-              </div>
-              <div class="col-12">
-                <label for="inputMessage" class="form-label fw-bold font-serif">Message</label>
-                <textarea id="inputMessage" rows="3" class="form-control form-control-lg rounded-0"></textarea>
-              </div>
+              <validation-provider tag="div" class="col-12" rules="required|max:255" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Subject</label>
+                <input type="text" class="form-control form-control-lg rounded-0" :class="[formInputClass, classes]" v-model="form.subject">
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
+
+              <validation-provider tag="div" class="col-12" rules="required|max:255" v-slot="{ errors, classes }">
+                <label :class="formLabelClass">Message</label>
+                <textarea rows="3" :class="[formInputClass, classes]" v-model="form.message"></textarea>
+                <div class="invalid-feedback">@{{ errors[0] }}</div>
+              </validation-provider>
+
               <div class="col-12 text-center mt-4">
-                <button type="submit" class="contact-submit btn btn-lg btn-secondary rounded-0">Send</button>
+                <button type="submit" class="contact-submit btn btn-lg btn-secondary rounded-0" :class="{ 'disabled': invalid || isProcessing }">
+                  <span v-if="!isProcessing">Send</span>
+                  <span v-else>Sending...</span>
+                </button>
               </div>
-            </div>
-          </form>
+
+            </form>
+
+          </validation-observer>
         </div>
       </div>
     </section>
@@ -367,28 +338,17 @@
     </a>
   </div>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
-  {{-- <script src="{{ asset('./js/app.js') }}"> --}}
-  {{-- </script> --}}
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/vue@2"></script>
+  <script defer src="//unpkg.com/axios/dist/axios.min.js"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+  <script defer src="//unpkg.com/vuejs-datepicker/dist/locale/translations/ja.js"></script>
+  <script defer src="//cdn.jsdelivr.net/npm/vee-validate@3.2.3/dist/rules.umd.min.js"></script>
+  <script defer src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script defer src="//cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
-  <script>
-    new Vue({
-      el: '#contact',
-      data: {
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      }
-      mounted() {
-        console.log('mounted');
-      }
-    })
-
-  </script>
+  <script defer src="{{ asset('js/contact.js') }}"></script>
+  <script defer src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

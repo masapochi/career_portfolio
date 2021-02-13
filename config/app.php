@@ -15,7 +15,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'description' => env('APP_DESCRIPTION', 'app description'),
-
+    'sns' => [
+        'twitter' => env('SOCIAL_TWITTER', 'https://twitter.com/__masapochi__'),
+        'github'  => env('SOCIAL_GITHUB', 'https://github.com/masapochi'),
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Environment
