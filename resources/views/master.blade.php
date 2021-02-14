@@ -204,7 +204,7 @@
                   <img class="avatar img-fluid rounded-circle shadow-sm bg-light border border-3 border-white" src="{{ asset("images/about/me.svg") }}" alt="Masapochi Avatar" width="354" height="354" loading="lazy" decoding="async">
                 </figure>
                 <h1 class="h2 text-center fw-bolder font-serif">Masapochi</h1>
-                <p class="text-center mb-4">フロント・バックエンドエンジニア<br>UI/UXデザイナー</p>
+                <p class="text-center mb-4">フロントエンド・サーバーサイドエンジニア<br>UI/UXデザイナー</p>
 
                 <div class="text-center">
                   @foreach($snses as $sns)
