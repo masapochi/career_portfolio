@@ -3,6 +3,9 @@
 My background, skills, works, and services are listed on this page.<br>
 If you are interested, please contact me via the contact form or Twitter.
 
+経歴、スキル、実績、サービスなどを掲載しています。<br>
+ご興味のある方は、お問い合わせフォームかTwitterからご連絡ください。
+
 <br>
 
 
@@ -41,8 +44,3 @@ If you are interested, please contact me via the contact form or Twitter.
 ## Author
 Name: Masapochi<br>
 Twitter: [@\_\_masapochi\_\_](https://twitter.com/__masapochi__)
-
-
-
-## LICENCE
-This repository is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
