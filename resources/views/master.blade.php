@@ -39,7 +39,7 @@
   <meta name="twitter:url" content="https://masapochi.me/">
   <meta name="twitter:title" content="{{ config('app.name') }}">
   <meta name="twitter:description" content="{{ config('app.description') }}">
-  <meta name="twitter:image" content="{{ asset('images/ogp.png') }}">
+  <meta name="twitter:image" content="{{ asset('images/ogp.jpg') }}">
 
   <!-- Facebook OGP -->
   <meta property="og:type" content="website">
@@ -48,7 +48,7 @@
   <meta property="og:url" content="https://masapochi.me/">
   <meta property="og:title" content="{{ config('app.name') }}">
   <meta property="og:description" content="{{ config('app.description') }}">
-  <meta property="og:image" content="{{ asset('images/ogp.png') }}">
+  <meta property="og:image" content="{{ asset('images/ogp.jpg') }}">
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
